@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const hbs = require('hbs');
-const port= process.env.PORT || 3000 ;
+const port= process.env.PORT || 5000 ;
 const path = require('path');
 
 
@@ -70,6 +70,10 @@ app.get("/rooms",(req , res)=>(
 
 app.get("/roomsem",(req , res)=>(
     res.render("roomsem")
+))
+
+app.get("/register",(req , res)=>(
+    res.render("register")
 ))
 
 
