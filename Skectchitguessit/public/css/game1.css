@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cont3{
+    width: 68vw;
+    height:70vh;
+    /* border: 2px solid white; */
+    margin-left: 30vh;
+    margin-top: 5vh;
+    display: flex;
+}
+
+.pnames{
+    width: 13vw;
+    height:70vh ;
+    border: 2px solid white;
+
+
+}
+.cnbox{
+    width:40vw;
+    height: 70vh;
+    /* border:2px solid white; */
+    margin-left: 10px;
+    
+
+}
+
+canvas {
+    border: 1px solid #000;
+    background-color: white;
+    margin-top: 10px;
+   
+}
+
+
+.answers{
+    width: 13vw;
+    height: 70vh;
+    border:2px solid blue;
+    margin-left: 10px;
+
+}
+
+.timer{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 60px;
+    margin-left: 17vw;
+}
