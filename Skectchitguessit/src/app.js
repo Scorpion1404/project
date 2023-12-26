@@ -3,6 +3,7 @@ const app = express();
 const hbs = require('hbs');
 const port= process.env.PORT || 5000 ;
 const path = require('path');
+const collection = require("./mongodb")
 
 
 //static path
@@ -11,7 +12,7 @@ const static_path = path.join(__dirname,"../public");
 const tamplate_path = path.join(__dirname,"../tamplates/views");
 const partials_path = path.join(__dirname,"../tamplates/partials");
 
-
+app.use(express.json())
 app.set('view engine','hbs');
 app.set('views',tamplate_path);
 hbs.registerPartials(partials_path)
@@ -19,6 +20,8 @@ hbs.registerPartials(partials_path)
 
 
 app.use(express.static(static_path));
+
+app.use(express.urlencoded({extended:false}))
 
 
 
@@ -76,6 +79,17 @@ app.get("/register",(req , res)=>(
     res.render("register")
 ))
 
+app.post("/register",async (req,res)=>{
+    const data ={
+        username:req.body.username,
+        password:req.body.password
+    }
+
+    await collection.insertMany([data])
+
+    res.render("option")
+
+})
 
 
 app.get("*",(req , res)=>(

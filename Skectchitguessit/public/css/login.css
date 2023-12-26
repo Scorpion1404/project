@@ -44,11 +44,11 @@ h1{
 }
 .email{
     font-size: large;
-    margin-left: 100px;
+    margin-left: 70px;
     margin-top: 30px;
 }
 .email input{
-    width:250px;
+    width:90%;
     height: 2rem;
 }
 
@@ -57,7 +57,7 @@ h1{
 }
 
 
-.submit{
+.sbtn{
     font-size: large;
     margin-left: 180px;
     margin-top: 30px;
@@ -68,8 +68,30 @@ h1{
 
 } 
 
-.submit a{
+.sbtn a{
 
     text-decoration: none;
     color: white;
 }
+.form-control{
+
+    margin-left: 5.5vw;
+    margin-top: 2rem;
+}
+.form-control input{
+    width: 250px;
+    height: 30px;
+}
+.form-control small{
+    color: red;
+    visibility: hidden;
+
+}
+.form-control.error small{
+    visibility: visible;
+
+}
+.form-control.success input{
+    border-color: greenyellow;
+}
+
