@@ -3,7 +3,8 @@ const app = express();
 const hbs = require('hbs');
 const port= process.env.PORT || 5000 ;
 const path = require('path');
-const collection = require("./mongodb")
+const collection = require("./db/conn")
+
 
 
 //static path
@@ -12,11 +13,12 @@ const static_path = path.join(__dirname,"../public");
 const tamplate_path = path.join(__dirname,"../tamplates/views");
 const partials_path = path.join(__dirname,"../tamplates/partials");
 
+
 app.use(express.json())
 app.set('view engine','hbs');
 app.set('views',tamplate_path);
 hbs.registerPartials(partials_path)
-
+app.use(express.urlencoded({extended:false}))
 
 
 app.use(express.static(static_path));
@@ -82,7 +84,7 @@ app.get("/register",(req , res)=>(
 app.post("/register",async (req,res)=>{
     const data ={
         username:req.body.username,
-        password:req.body.password
+        password:req.body.password,
     }
 
     await collection.insertMany([data])
@@ -92,14 +94,29 @@ app.post("/register",async (req,res)=>{
 })
 
 
+
+app.post("/login",async (req,res)=>{
+   try{
+    const check=await collection.findOne({username:req.body.username})
+
+    if (check.password===req.body.password){
+        res.render("option")
+    }
+    else{
+        res.send("wrong details")
+    }
+
+   }catch{
+
+    res.send("wrong detials")
+
+   }
+})
+
+
 app.get("*",(req , res)=>(
     res.send("Error 404")
 ))
-
-
-
-
-
 
 
 

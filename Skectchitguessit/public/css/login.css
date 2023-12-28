@@ -88,10 +88,18 @@ h1{
 
 }
 .form-control.error small{
+    color: red;
     visibility: visible;
 
+}
+
+.form-control.error input{
+
+    border: 1px solid red ;
 }
 .form-control.success input{
     border-color: greenyellow;
 }
+
+
 
