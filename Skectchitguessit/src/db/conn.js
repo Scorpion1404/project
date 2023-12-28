@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbUrl = "mongodb+srv://yashp:Deadpool2004@cluster0.aexlvbm.mongodb.net/mydbs";
+const dbUrl = "mongodb+srv://yashp:<password>@cluster0.aexlvbm.mongodb.net/mydbs";
 
 
 
