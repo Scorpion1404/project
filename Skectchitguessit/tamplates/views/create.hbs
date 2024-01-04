@@ -32,9 +32,10 @@
         <video src="../images/ogbg.mp4" class="vid" autoplay loop></video>
      </div>
 
-     <div class="bbox">
-    <div class="roombox">
 
+    <form id="roomfrom">
+    <div class="bbox">
+    <div class="roombox">
         
         <input type="text" class="create" placeholder="Create Room Name">
         <select name="select" id="sel">
@@ -44,11 +45,23 @@
         </select>
         <div class="created">
 
-            <button class="rbtn" ><a href="game1">Create</a></button>
-        </div>
-        
+            <button class="rbtn" type="submit" ><a href="game1">Create</a></button>
+        </div>  
     </div>
     </div>
-     
+    </form>
+
+
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      
+  const socket = io();
+
+   </script>
 
 </body>

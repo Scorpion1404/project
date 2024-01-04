@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const hbs = require('hbs');
+const http = require('http');
 const port= process.env.PORT || 5000 ;
 const path = require('path');
 const collection = require("./db/conn")
+const socketIO = require('socket.io');
 
 
+const server = http.createServer(app);
+const io = socketIO(server);
 
 //static path
 
@@ -113,6 +117,18 @@ app.post("/login",async (req,res)=>{
    }
 })
 
+io.on('connection', (socket) => {
+    console.log('A user connected');
+  
+
+    // Handle disconnection
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+
+
+  });
+
 
 app.get("*",(req , res)=>(
     res.send("Error 404")
@@ -120,6 +136,8 @@ app.get("*",(req , res)=>(
 
 
 
-app.listen(port , ()=>{
-    console.log(`listening to port at ${port}`)
-})
+
+
+server.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
