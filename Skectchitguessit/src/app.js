@@ -20,14 +20,15 @@ const partials_path = path.join(__dirname,"../tamplates/partials");
 
 app.use(express.json())
 app.set('view engine','hbs');
+app.set('view engine','ejs');
 app.set('views',tamplate_path);
 hbs.registerPartials(partials_path)
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 
 
 app.use(express.static(static_path));
 
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 
 
 
@@ -54,9 +55,23 @@ app.get("/createem",(req , res)=>(
     res.render("createem")
 ))
 
-app.get("/game1",(req , res)=>(
-    res.render("game1")
-))
+app.post("/game1",(req , res)=>{
+    const room= req.body.room;
+    res.render('game1',{room});
+});
+
+
+
+
+io.on('connection', (socket) => {
+    socket.on('message', (msg) => {
+        io.emit('message', msg);
+    });
+});
+
+
+
+
 
 app.get("/game2",(req , res)=>(
     res.render("game2")
